@@ -1,0 +1,45 @@
+# Terraform state and working data
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Variable files may contain secrets
+*.tfvars
+*.tfvars.json
+!*.tfvars.example
+
+# Keys and local credentials
+*.pem
+*.key
+id_rsa
+id_ed25519
+.aws/
+.ssh/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+secrets/
+credentials/
+*.secret
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ansible runtime/secret files
+*.retry
+vault-password-file

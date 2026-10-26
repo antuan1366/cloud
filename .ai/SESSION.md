@@ -1,48 +1,54 @@
 # Latest Session Handoff
 
-Date: 2026-10-25  
-Session: initial project documentation  
-Status: documentation initialized; implementation not started.
+Date: 2026-10-27  
+Session: local automation tool setup  
+Status: local tools installed and verified; AWS access and provisioning not started.
 
 ## Goal
-Build an AWS web server and database, managed by Terraform and configured by Ansible from a VMware Linux VM on Windows. Minimize credit consumption and make the repository sufficiently precise for another person or AI to continue.
+Build a cost-conscious AWS web server and database lab managed with Terraform and Ansible from a VMware Ubuntu VM on Windows. Preserve AWS credits and document safe cleanup.
 
-## Environment
-- Windows laptop: user-reported.
-- AWS Console access: user-reported.
-- Credit: USD 120 shown in console, user-reported.
-- Access/free-plan message: ends 2026-11-05 or when credits are depleted, user-reported.
-- User earlier saw 13 days remaining; recheck because relative time changes.
-- Git and Terraform not installed: user-reported.
-- VMware/Linux VM and Ansible status: not confirmed.
-- No project AWS resources confirmed.
+## Environment and verified results
+- Ubuntu VM hostname shown as `juniper`; normal user is `antuan`.
+- Ubuntu version reported/previously checked: 24.04.5 LTS.
+- Git: 2.43.0.
+- Terraform: v1.17.0 on linux_amd64.
+- AWS CLI: v2.38.6.
+- Python: 3.12.3.
+- Ansible venv: `~/ansible-venv`, Ansible core 2.21.5.
+- System Ansible also exists as core 2.16.3 at `/usr/bin/ansible`; use the venv by running `source ~/ansible-venv/bin/activate`.
+- Ansible localhost ping previously succeeded.
+- AWS CLI and Terraform are installed system-wide and are available to `antuan`.
+- GitHub repo: https://github.com/antuan1366/cloud; default branch main; public.
+- No AWS CLI credentials/profile have been configured or verified.
+- No project AWS resources have been created.
 
-## Repository
-- URL: https://github.com/antuan1366/cloud
-- Default branch: main.
-- Visibility: public.
-- GitHub integration reported admin/push permission.
+## User-reported account context (not freshly verified)
+- AWS Credits page previously showed USD 120 remaining.
+- Console message previously said free access ends on 2026-11-05 or when credits are depleted.
+- Recheck live terms, current balance, eligible services, and current usage before deployment.
 
 ## Decisions
-- Terraform and Ansible run from Linux VM under VMware.
-- First cloud candidate is a minimum-resource design, possibly one EC2 host for web + DB.
-- RDS is optional later after cost review.
+- Terraform provisions infrastructure; Ansible configures OS/services; Git versions project files; AWS CLI is for AWS API/terminal access.
+- Run normal development as `antuan`, not root. Use `sudo` only when needed.
+- Keep Ansible activated in `~/ansible-venv` when using project Ansible commands.
+- Candidate first architecture: one small EC2 instance with web and database on the same host, database private/localhost only. Not production-grade.
+- RDS, NAT Gateway, load balancers, and other extra resources require separate cost review.
 - No AWS resource creation before a cost warning and explicit approval.
-- Never assume a plan upgrade extends credits or makes all services free.
+- Never ask the user to paste access keys, secret keys, session tokens, MFA codes, or passwords into chat.
+- The user explicitly instructed that GitHub docs should only be updated when they ask. This update was made in response to their explicit request.
 
-## Completed
-- [x] Initial docs created (verify individual files in GitHub).
-- [ ] No tools installed.
-- [ ] No AWS resources provisioned.
+## Completed in this session
+- [x] Installed Terraform v1.17.0 and verified `terraform version`.
+- [x] Installed AWS CLI v2.38.6 and verified `aws --version`.
+- [x] Verified Git 2.43.0.
+- [x] Switched from root to `antuan` and verified Ansible core 2.21.5 in its venv.
+- [x] Earlier local test: `ansible localhost -m ping` returned SUCCESS.
+- [x] Updated this handoff and project status documents on GitHub after explicit user request.
 
 ## Exact next action
-1. Check current AWS Credits, eligible services, expiry, Bills/usage, and plan terms.
-2. Check whether budgets/alerts exist and MFA is enabled.
-3. Review existing AWS resources.
-4. Confirm VMware Workstation status and laptop RAM.
-5. Install Git on Windows and verify git --version.
-6. Clone the repository and prepare Linux VM.
-7. Do not provision AWS until costs/terms are reviewed.
+Ask how the user signs into AWS Console (root, IAM user, IAM Identity Center/SSO, or credentials provided by another person). Based on that answer, choose a secure CLI authentication method. Do not configure credentials before clarifying access type and do not request secrets in chat.
+
+After authentication is established, verify identity with `aws sts get-caller-identity`, then review credits, terms, usage, budget alerts, MFA, region, and existing resources. Do not apply Terraform until costs and cleanup have been explained and the user explicitly approves.
 
 ## Notes for next assistant
-Give only instructions needed for the current step. Before any potentially billable AWS action, explain costs and cleanup and request approval. Update this handoff at the end of the next session.
+Give one manageable step at a time. Avoid broad command dumps. Clearly distinguish completed work from proposed work and user-reported facts. Do not update GitHub again unless explicitly asked.

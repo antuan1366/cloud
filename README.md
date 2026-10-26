@@ -3,13 +3,17 @@
 A practical, cost-conscious lab for deploying and securing a small AWS web service and database, managed with Terraform and Ansible from a Linux VM under VMware on Windows.
 
 ## Current status
-- Phase: 0 — preparation; no project AWS resources confirmed.
+- Phase: 0 — local tooling prepared; AWS account review and authentication not yet completed.
 - AWS Console access: user-reported.
-- Credit: USD 120 remaining, as shown by the user in AWS Console.
-- Access/free-plan message: ends on 5 November 2026 or when credits are depleted, as reported by the user. Recheck live terms; the previously displayed “13 days” is time-sensitive.
-- Windows laptop: user-reported.
-- Git and Terraform: not installed, user-reported.
-- VMware/Linux VM and Ansible status: not yet confirmed.
+- AWS credit: USD 120 remaining, as previously reported by the user; recheck live balance and terms.
+- Access/free-plan message: previously reported as ending on 5 November 2026 or when credits are depleted. Recheck current terms.
+- Ubuntu VM: Ubuntu 24.04.5 LTS, user-reported/previously checked.
+- Git: 2.43.0, verified.
+- Terraform: v1.17.0, verified.
+- Ansible: core 2.21.5 in `~/ansible-venv`, verified.
+- AWS CLI: v2.38.6, verified.
+- No AWS CLI credentials/profile configured or verified.
+- No project AWS resources have been created.
 
 Start with .ai/START_HERE.md and .ai/STATE.md.
 
@@ -17,8 +21,8 @@ Start with .ai/START_HERE.md and .ai/STATE.md.
 Use Git for version control, Terraform to provision minimum AWS infrastructure, and Ansible to configure a Linux host running a web server and database. Apply network restrictions, test behavior, document costs, and verify cleanup.
 
 ## Proposed approach
-1. Verify account terms, credits, billing, MFA, and existing resources.
-2. Prepare Git on Windows and a Linux VM under VMware.
+1. Verify AWS account access type, terms, credits, billing, MFA, and existing resources.
+2. Use the local Ubuntu VM for Git, Terraform, Ansible, and AWS CLI.
 3. Validate Terraform locally before provisioning.
 4. Review current prices and credit eligibility before creating any AWS resource.
 5. Initially evaluate one small EC2 instance hosting both web and database services. This is a learning setup, not production architecture.
@@ -46,4 +50,4 @@ Use Git for version control, Terraform to provision minimum AWS infrastructure, 
 - .ai/SESSION.md — latest session handoff.
 - .ai/CHANGELOG.md — meaningful changes.
 
-After each meaningful session, update STATE, TODO, and SESSION, plus other documents affected by changes.
+After each meaningful session, update STATE, TODO, and SESSION, plus other documents affected by changes. Only update this repository when the user explicitly asks.

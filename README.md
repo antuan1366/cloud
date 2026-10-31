@@ -1,53 +1,45 @@
 # Secure Cloud Operations Lab
 
-A practical, cost-conscious lab for deploying and securing a small AWS web service and database, managed with Terraform and Ansible from a Linux VM under VMware on Windows.
+A cost-controlled, console-first AWS security learning lab. The current plan covers VPC segmentation, Dockerized web application deployment, Amazon RDS PostgreSQL, Microsoft Remote Desktop Services, AWS Application Load Balancer, AWS WAF, storage, monitoring, and security assessment.
 
-## Current status
-- Phase: 0 — local tooling prepared; AWS account review and authentication not yet completed.
-- AWS Console access: user-reported.
-- AWS credit: USD 120 remaining, as previously reported by the user; recheck live balance and terms.
-- Access/free-plan message: previously reported as ending on 5 November 2026 or when credits are depleted. Recheck current terms.
-- Ubuntu VM: Ubuntu 24.04.5 LTS, user-reported/previously checked.
-- Git: 2.43.0, verified.
-- Terraform: v1.17.0, verified.
-- Ansible: core 2.21.5 in `~/ansible-venv`, verified.
-- AWS CLI: v2.38.6, verified.
-- No AWS CLI credentials/profile configured or verified.
-- No project AWS resources have been created.
+## Current project direction
+- AWS infrastructure for the new scenario will be configured through the AWS Management Console.
+- Terraform and AWS CLI will not be used to deploy this iteration.
+- Linux application tier: one EC2 host running Docker, with two application containers and one HAProxy or Traefik load-balancer container.
+- No Nginx.
+- Database tier: one private Amazon RDS PostgreSQL instance, initially Single-AZ. Database replication/DBA HA is out of scope.
+- Management tier: one Windows Server EC2 for Microsoft Remote Desktop Services learning. This is not a production RDS farm.
+- Network: one VPC, multiple logical security zones, and two Availability Zones.
+- Temporary learning exercises: AWS ALB, AWS WAF, S3, CloudTrail, CloudWatch, and selected security assessment tools.
+- Docker container load balancing is not EC2-level high availability.
 
-Start with .ai/START_HERE.md and .ai/STATE.md.
+## Account and cost context
+- AWS credits: USD 120 remaining was previously reported by the user; recheck live balance and eligible services.
+- Access/free-plan deadline: 5 November 2026 was previously reported; recheck live terms.
+- The user requires a cost warning and explicit approval before any potentially billable AWS action.
+- Stopping EC2 does not stop EBS storage charges or all networking charges. ALB, WAF, NAT Gateway, and Network Firewall may charge independently.
+- Do not assume promotional credits cover every service.
+- The previous learning exercise deployed a Terraform-managed EC2 web server. Its current running state and all related resources must be inspected in the AWS Console before adding new resources.
 
-## Intended result
-Use Git for version control, Terraform to provision minimum AWS infrastructure, and Ansible to configure a Linux host running a web server and database. Apply network restrictions, test behavior, document costs, and verify cleanup.
+## Six-day plan
+See [.ai/IMPLEMENTATION_PLAN_6_DAYS.md](.ai/IMPLEMENTATION_PLAN_6_DAYS.md) for architecture, subnet zones, day-by-day tasks, acceptance criteria, cost guardrails, and cleanup.
 
-## Proposed approach
-1. Verify AWS account access type, terms, credits, billing, MFA, and existing resources.
-2. Use the local Ubuntu VM for Git, Terraform, Ansible, and AWS CLI.
-3. Validate Terraform locally before provisioning.
-4. Review current prices and credit eligibility before creating any AWS resource.
-5. Initially evaluate one small EC2 instance hosting both web and database services. This is a learning setup, not production architecture.
-6. Consider a separate RDS database only after a separate cost review.
-7. Test security and functionality, then remove lab resources and verify cleanup.
-
-## Cost and security rules
-- No potentially billable AWS action before a clear warning and explicit user approval.
-- Budgets/alerts are notifications, not guaranteed spending caps.
-- Stopping EC2 does not necessarily stop charges for storage, snapshots, public IPv4, or other resources.
-- Avoid NAT Gateway, load balancers, and always-on managed databases initially unless approved after cost review.
-- Never commit credentials, private keys, Terraform state, secret-bearing variable files, or sensitive plans.
-- Distinguish verified facts from user-reported information, plans, and untested assumptions.
-
-## Documents
+## Documentation
 - .ai/START_HERE.md — handoff instructions.
-- .ai/PROJECT.md — scope and learning goals.
 - .ai/STATE.md — authoritative current state.
+- .ai/PROJECT.md — scope and learning goals.
 - .ai/TODO.md — prioritized tasks and acceptance criteria.
-- .ai/ARCHITECTURE.md — proposed architecture.
+- .ai/ARCHITECTURE.md — current proposed architecture.
 - .ai/DECISIONS.md — decisions and rationale.
 - .ai/COST_AND_CLEANUP.md — cost risks and teardown.
 - .ai/SECURITY.md — security and secrets policy.
-- .ai/RUNBOOK.md — commands and operational procedures.
+- .ai/RUNBOOK.md — operational procedures.
 - .ai/SESSION.md — latest session handoff.
 - .ai/CHANGELOG.md — meaningful changes.
 
-After each meaningful session, update STATE, TODO, and SESSION, plus other documents affected by changes. Only update this repository when the user explicitly asks.
+## Rules
+- Never create a potentially billable AWS resource without explaining costs, ongoing charges, and cleanup, then receiving explicit approval.
+- Verify account credits, eligible services, billing, and existing resources before deployment.
+- Treat all commits as public; never commit secrets, private keys, credentials, sensitive logs, or personal data.
+- Distinguish verified facts, user-reported information, plans, and untested assumptions.
+- Only update this repository when the user explicitly asks.

@@ -1,54 +1,62 @@
 # Current State
 
-Last updated: 2026-10-27  
-Status: Phase 0 — local tooling prepared; AWS account review and authentication not yet completed.
+Last updated: 2026-10-31  
+Status: Architecture and six-day implementation plan revised; new scenario resources have not been deployed.
 
-## Facts and status
+## Current direction
+- User explicitly requested AWS Management Console configuration for the new scenario, not Terraform or AWS CLI deployment.
+- One VPC with logical public, application, database, and management security zones.
+- Two Availability Zones for subnet and managed-service learning.
+- One Linux EC2 host running Docker: two application containers plus one HAProxy or Traefik container.
+- Nginx removed from the design.
+- One private Amazon RDS PostgreSQL instance, initially Single-AZ. Database replication/DBA HA is out of scope.
+- One Windows Server EC2 for Microsoft Remote Desktop Services learning.
+- Temporary ALB and AWS WAF exercises.
+- One private S3 bucket for storage/backup/log exercises.
+- No Transit Gateway or dedicated inspection VPC in the base architecture.
+- Detailed daily tasks: .ai/IMPLEMENTATION_PLAN_6_DAYS.md.
 
-### Local environment — verified by command output
-- Windows laptop running VMware with an Ubuntu VM.
-- Ubuntu VM upgraded to Ubuntu 24.04.5 LTS (user-reported and previously verified with `lsb_release -a`).
-- Normal Linux user: `antuan`; hostname shown as `juniper`.
-- Git 2.43.0 installed and working.
-- Terraform v1.17.0 installed and working (`terraform version`).
-- AWS CLI v2.38.6 installed and working (`aws --version`).
-- Python 3.12.3 available in Ubuntu.
-- Ansible core 2.21.5 installed in `/home/antuan/ansible-venv`; the venv was activated during verification.
-- `ansible localhost -m ping` succeeded earlier from the virtual environment.
-- A system-wide Ansible 2.16.3 also exists at `/usr/bin/ansible`; prefer the virtual environment for this project.
-- Git, Terraform, Ansible, and AWS CLI were verified from the normal `antuan` account. AWS CLI and Terraform were installed system-wide using sudo/root, but are available to `antuan`.
+## Previous learning exercise — historical verified results
+The earlier lab used Terraform and Ansible and was deployed before the current console-first redesign:
+- A t3.micro Amazon Linux 2023 EC2 web server was provisioned in us-east-1.
+- Terraform created an EC2 instance, key pair, and Security Group.
+- Ansible installed and started Nginx.
+- The web endpoint returned HTTP 200.
+- Previously recorded instance ID: i-05cd787404265bc18.
+- Previously recorded public IP: 54.163.28.219.
+- These are historical details, not a fresh check of current AWS state. Inspect the AWS Console before creating anything else. Do not assume the instance is still running or safe to delete.
+- The previous lab source and Terraform state may exist on the user's Ubuntu VM. Do not overwrite or destroy it without explicit approval.
 
-### AWS account — user-reported, must be rechecked
+## Local tooling — previously verified
+- Ubuntu VM hostname shown as juniper; normal user antuan.
+- Ubuntu 24.04.5 LTS.
+- Git 2.43.0; Terraform v1.17.0; AWS CLI v2.38.6; Python 3.12.3.
+- Ansible core 2.21.5 in /home/antuan/ansible-venv; system Ansible 2.16.3 also exists.
+- These tools remain available for learning, but Terraform/AWS CLI are not to be used for infrastructure deployment in the current scenario.
+
+## AWS account context — user-reported, not freshly verified
 - AWS Console is accessible.
-- AWS Credits page previously showed USD 120.00 remaining.
-- Console message previously said free access ends on 5 November 2026 or when credits are depleted.
-- Current credit balance, expiry terms, eligible services, billing/usage, budgets/alerts, MFA, account access type, region, and existing resources have not been verified in this session.
+- Credits page previously showed USD 120 remaining.
+- Access/free-plan message previously said access ends on 5 November 2026 or when credits are depleted.
+- User previously used an IAM user named adel and may not have billing permissions.
+- Current credit balance, eligible services, usage, billing, account access type, MFA, Region, and resource inventory must be rechecked.
 
-### Not yet done
-- AWS CLI credentials/profile have not been configured.
-- No AWS identity has been verified with `aws sts get-caller-identity`.
-- No project AWS resources have been created by this lab.
-- No Terraform configuration has been applied.
-- AWS CLI agent toolkit/MCP setup has not been used.
-- Terraform has not yet been tested against AWS.
-- Repository has not been confirmed cloned to the Ubuntu VM.
-
-## Proposed architecture
-See ARCHITECTURE.md. Candidate: one small EC2 instance for web and database, with database access restricted to localhost/private access. This is a learning design, not production architecture, and requires cost review before deployment.
-
-## Cost posture
-- Reported credit balance: USD 120; last reported before this update, not freshly verified.
-- Reported deadline: 2026-11-05; recheck live account terms.
-- No AWS resource creation before a clear cost warning and explicit user approval.
-- Do not assume a plan upgrade extends credits or makes all services free.
-- Budget alerts are notifications, not guaranteed spending caps.
+## Not yet done for revised scenario
+- No new VPC/subnets/security zones have been created.
+- No Docker host/containers have been deployed.
+- No new Amazon RDS database has been created.
+- No Windows RDS server has been created.
+- No ALB or WAF has been created.
+- No S3 bucket has been created.
+- No new firewall appliance or AWS Network Firewall has been deployed.
+- No new GuardDuty, Security Hub, or Inspector activation has been approved.
 
 ## Immediate next action
-1. Before configuring AWS access, ask how the user signs in (root, IAM user, IAM Identity Center/SSO, or credentials provided by another person).
-2. Prefer a supported secure authentication method; do not ask the user to paste secrets into chat.
-3. Recheck current credits/expiry/eligible services, current usage, budgets/alerts, MFA, region, and existing AWS resources.
-4. Only then plan the minimum-resource deployment and explain expected charges and cleanup.
-5. Do not run `terraform apply` or create AWS resources without explicit approval.
+1. Inspect the existing EC2 instance and related resources in the AWS Console.
+2. Recheck credit balance, expiry, eligible services, current usage, billing visibility, Region, and account permissions.
+3. Decide whether to retain or clean up the previous lab. Do not delete it without explicit user approval.
+4. Confirm exact pricing and dependencies for Day 1 networking and proposed EC2/RDS/Windows/ALB/WAF exercises.
+5. Present a cost warning and obtain explicit approval before creating resources.
 
 ## Update policy
 Only update this repository when the user explicitly asks. Replace stale values when newer evidence arrives. Date balances, deadlines, inventory checks, and test results.

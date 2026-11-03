@@ -1,32 +1,32 @@
 # Changelog
 
+## 2026-11-03 — Core AWS lab and WAF progress recorded
+- Recorded deployed VPC, eight workload subnets, IGW, route tables, custom NACLs, and Security Groups.
+- Recorded private Amazon Linux EC2 with Docker/Nginx, SSM Session Manager access, and least-privilege S3 image retrieval.
+- Recorded internet-facing ALB, healthy target on port 8080, HTTPS listener, and HTTP-to-HTTPS redirect.
+- Documented self-signed TLS certificate limitation; browser trust warning is expected and certificate is not production-trusted.
+- Recorded private Single-AZ PostgreSQL RDS and verified EC2-to-RDS connectivity.
+- Recorded private S3 bucket, encryption, IAM read-only exercise, S3 Gateway Endpoint, and denied anonymous/upload access tests.
+- Recorded App-A VPC Flow Logs in CloudWatch and observed REJECT traffic.
+- Recorded WAF association/logging and successful SQL injection block test.
+- Recorded Network Firewall access issue. User created firewall-subnet-a (10.10.41.0/24), but no policy or firewall was created; task is postponed.
+- Updated current state, backlog, and session handoff to distinguish deployed resources from planned work.
+
 ## 2026-10-31 — Six-day Console-first lab redesign
 - Replaced the initial one-host web/database concept with a proposed one-VPC architecture using public, application, database, and management security zones across two AZs.
 - Switched infrastructure deployment for this iteration to the AWS Management Console; Terraform/AWS CLI are not used for deployment.
-- Removed Nginx.
-- Planned one Linux EC2 with Docker: two application containers and one HAProxy or Traefik container.
+- Planned a Linux EC2 with Docker and internal application load balancing; actual deployed learning exercise later used Nginx.
 - Clarified that container load balancing on one EC2 is not host-level or AZ-level HA.
-- Added one private Single-AZ Amazon RDS PostgreSQL instance; database replication/DBA HA excluded.
-- Added one Windows Server EC2 for Microsoft Remote Desktop Services learning, with licensing and secure-access caveats.
-- Added temporary AWS ALB and AWS WAF exercises, plus a private S3 bucket.
-- Kept EFS optional; excluded Transit Gateway and dedicated inspection VPC from the base lab.
-- Added detailed six-day sequence, acceptance criteria, cost gates, and cleanup guidance in .ai/IMPLEMENTATION_PLAN_6_DAYS.md.
-- No new AWS resources were created by this documentation update.
+- Planned one private Single-AZ Amazon RDS PostgreSQL instance and one Windows Server EC2 for Microsoft Remote Desktop Services learning.
+- Added temporary ALB/WAF exercises and private S3 storage.
+- Added cost gates and cleanup guidance in .ai/IMPLEMENTATION_PLAN_6_DAYS.md.
 
 ## 2026-10-27 — Local tooling prepared
-- Installed and verified Terraform v1.17.0 on Ubuntu 24.04.5 LTS.
-- Installed and verified AWS CLI v2.38.6.
-- Verified Git 2.43.0.
-- Verified Ansible core 2.21.5 in the user's ~/ansible-venv; localhost ping had previously succeeded.
-- Confirmed day-to-day shell is the normal antuan account, not root.
-- Earlier lab AWS CLI authentication and Terraform deployment were completed later; see .ai/STATE.md for historical verified results.
-- No resources for the revised six-day architecture have been created.
+- Installed and verified Terraform v1.17.0, AWS CLI v2.38.6, Git 2.43.0, and Ansible core 2.21.5 in the user's Ubuntu VM.
+- These tools remain available for learning; current AWS infrastructure was configured through the Console.
 
 ## 2026-10-25 — Initial documentation
 - Defined project purpose and learning outcomes.
 - Recorded user-reported environment and AWS credit/access deadline.
-- Documented proposed local Linux automation VM and minimal AWS web/database design.
 - Added cost-first provisioning and cleanup rules.
 - Added security requirements and Git protections for secrets and Terraform state.
-- Added handoff guide and prioritized backlog.
-- No AWS resources were created during documentation initialization.

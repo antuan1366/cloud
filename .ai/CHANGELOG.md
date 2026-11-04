@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-04 — Added cloud infrastructure auditing curriculum
+- Added .ai/CLOUD_AUDIT_LEARNING_PLAN.md with a structured AWS technical audit curriculum.
+- Covered assessment scope and authorization, asset discovery, IAM, network security, data protection, logging, vulnerability management, configuration, backup/recovery, incident response, and resilience.
+- Added framework mapping guidance for CIS AWS Foundations Benchmark, AWS Well-Architected, NIST, ISO/IEC 27001, and relevant SOC 2 Trust Services Criteria.
+- Added evidence handling, risk-rated findings, remediation, retesting, and technical reporting exercises.
+- Clarified that the curriculum does not authorize the learner to issue SOC 2 reports or act as an independent CPA auditor.
+- Updated README, PROJECT, TODO, and SESSION documentation.
+- User decided not to apply for the discussed SOC 2/DevSecOps Upwork job.
+- No AWS resources were created or changed.
+
 ## 2026-10-31 — Six-day Console-first lab redesign
 - Replaced the initial one-host web/database concept with a proposed one-VPC architecture using public, application, database, and management security zones across two AZs.
 - Switched infrastructure deployment for this iteration to the AWS Management Console; Terraform/AWS CLI are not used for deployment.
@@ -7,7 +17,7 @@
 - Planned one Linux EC2 with Docker: two application containers and one HAProxy or Traefik container.
 - Clarified that container load balancing on one EC2 is not host-level or AZ-level HA.
 - Added one private Single-AZ Amazon RDS PostgreSQL instance; database replication/DBA HA excluded.
-- Added one Windows Server EC2 for Microsoft Remote Desktop Services learning, with licensing and secure-access caveats.
+- Added one Windows Server EC2 for Microsoft RDS learning, with licensing and secure-access caveats.
 - Added temporary AWS ALB and AWS WAF exercises, plus a private S3 bucket.
 - Kept EFS optional; excluded Transit Gateway and dedicated inspection VPC from the base lab.
 - Added detailed six-day sequence, acceptance criteria, cost gates, and cleanup guidance in .ai/IMPLEMENTATION_PLAN_6_DAYS.md.

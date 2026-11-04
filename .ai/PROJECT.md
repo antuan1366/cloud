@@ -1,10 +1,10 @@
 # Project Definition
 
 ## Purpose
-Build a small, cost-controlled AWS environment to learn cloud infrastructure and security through the AWS Management Console. Focus: network segmentation, Docker, managed databases, Windows remote administration, load balancing, WAF, storage, monitoring, and security assessment.
+Build a small, cost-controlled AWS environment to learn cloud infrastructure and security through the AWS Management Console. Focus: network segmentation, Docker, managed databases, Windows remote administration, load balancing, WAF, storage, monitoring, security assessment, and cloud infrastructure auditing.
 
 ## User goal
-Develop practical Cloud Security Engineering capability by building, securing, testing, and documenting a realistic small AWS environment. Relevant background includes network/infrastructure administration, vulnerability management, security auditing, firewalls/WAF, Splunk, Windows/Linux, and networking.
+Develop practical Cloud Security Engineering capability by building, securing, testing, auditing, and documenting a realistic small AWS environment. Relevant background includes network/infrastructure administration, vulnerability management, security auditing, firewalls/WAF, Splunk, Windows/Linux, and networking.
 
 ## Current scope
 - Console-first AWS infrastructure configuration; no Terraform or AWS CLI deployment in this iteration.
@@ -19,6 +19,7 @@ Develop practical Cloud Security Engineering capability by building, securing, t
 - Temporary AWS Application Load Balancer and AWS WAF exercises.
 - One private S3 bucket for object storage/backup/log learning.
 - Security Groups, NACLs, IAM, CloudTrail, CloudWatch, and selected security assessment tools.
+- A dedicated cloud infrastructure auditing track: scope definition, asset discovery, control assessment, framework mapping, evidence collection, findings, remediation, retesting, and reporting.
 
 ## Architecture principles
 - Security zones are logical trust areas; Availability Zones are separate AWS infrastructure locations.
@@ -29,6 +30,9 @@ Develop practical Cloud Security Engineering capability by building, securing, t
 - ALB is a separate managed AWS service with independent charges.
 - EFS is optional and not required for the proposed stateless app.
 - Transit Gateway and centralized inspection VPC are advanced follow-up topics, not part of the base lab.
+- Audit only environments for which explicit authorization and a defined scope exist.
+- Treat scanner output as leads requiring validation, not as final audit conclusions.
+- Keep evidence sanitized and protected; never place secrets or sensitive customer data in Git.
 
 ## Six-day outcomes
 1. Build VPC, subnets, route tables, Security Groups, and NACLs in the Console.
@@ -38,6 +42,17 @@ Develop practical Cloud Security Engineering capability by building, securing, t
 5. Configure/test AWS ALB and AWS WAF; compare third-party WAF/firewall products.
 6. Review CloudTrail, CloudWatch, posture, selected vulnerability tools, and cleanup.
 
+## Cloud infrastructure auditing outcomes
+See [.ai/CLOUD_AUDIT_LEARNING_PLAN.md](CLOUD_AUDIT_LEARNING_PLAN.md) for the complete curriculum.
+
+- Define scope, authorization, rules of engagement, and exclusions.
+- Inventory assets, identities, network paths, data stores, and exposed services.
+- Assess IAM, network security, data protection, logging, vulnerability management, configuration, backup/recovery, incident response, and resilience.
+- Map selected evidence to CIS AWS Foundations Benchmark, AWS Well-Architected, NIST, ISO/IEC 27001, and relevant SOC 2 Trust Services Criteria.
+- Collect secure evidence, write risk-rated findings, recommend remediation, and retest.
+- Produce a technical cloud security assessment report and evidence index.
+- Understand that formal SOC 2 examination/report issuance is performed by an independent qualified CPA firm; this lab does not confer auditor status or authority to issue a report.
+
 ## Exclusions
 - Nginx.
 - Database replication/failover and DBA HA.
@@ -46,6 +61,7 @@ Develop practical Cloud Security Engineering capability by building, securing, t
 - Transit Gateway/inspection VPC in the base design.
 - Paid firewall appliance deployment without separate licensing and cost approval.
 - Terraform/AWS CLI infrastructure deployment in this iteration.
+- Issuing formal SOC 2 reports, certification, or independent attestation.
 
 ## Definition of done
 - Network architecture and access matrix documented.
@@ -55,5 +71,6 @@ Develop practical Cloud Security Engineering capability by building, securing, t
 - Windows remote administration path is secured and Microsoft RDS roles understood.
 - ALB health checks and WAF behavior tested.
 - Monitoring/security findings and limitations documented.
+- Cloud audit scope, inventory, control matrix, evidence, risk-rated findings, remediation, and retest report completed in the lab.
 - Temporary paid resources deleted and remaining billable resources checked.
 - Evidence distinguishes completed work from plans and assumptions.

@@ -51,3 +51,10 @@ See [.ai/IMPLEMENTATION_PLAN_6_DAYS.md](.ai/IMPLEMENTATION_PLAN_6_DAYS.md) for a
 - Treat all commits as public; never commit secrets, private keys, credentials, sensitive logs, or personal data.
 - Distinguish verified facts, user-reported information, plans, and untested assumptions.
 - Only update this repository when the user explicitly asks.
+
+## Additional learning track: EC2 Security and Monitoring
+A job-aligned practice track has been added for EC2 hardening, least-privilege IAM instance roles, CloudWatch Agent memory/filesystem metrics, dashboards, 80%/90% disk alarms, SNS email notifications, and scheduled per-filesystem storage reports.
+
+See [.ai/EC2_SECURITY_MONITORING_PRACTICE_PLAN.md](.ai/EC2_SECURITY_MONITORING_PRACTICE_PLAN.md). This is planned practice only; no AWS resources have been deployed for it. The plan distinguishes standard EC2 CPU/network metrics from guest-level RAM/disk metrics, and threshold alerts from periodic capacity reports.
+
+The practice may incur charges for EC2, EBS, CloudWatch metrics/alarms/dashboards/logs, SNS, Lambda, and EventBridge. Cost review and explicit approval are required before enabling or creating resources.

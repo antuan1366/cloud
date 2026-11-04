@@ -74,3 +74,12 @@ See [.ai/CLOUD_AUDIT_LEARNING_PLAN.md](CLOUD_AUDIT_LEARNING_PLAN.md) for the com
 - Cloud audit scope, inventory, control matrix, evidence, risk-rated findings, remediation, and retest report completed in the lab.
 - Temporary paid resources deleted and remaining billable resources checked.
 - Evidence distinguishes completed work from plans and assumptions.
+
+## EC2 security and monitoring practice outcomes
+See [.ai/EC2_SECURITY_MONITORING_PRACTICE_PLAN.md](EC2_SECURITY_MONITORING_PRACTICE_PLAN.md).
+- Harden a test EC2 instance; review Security Groups/NACLs, SSH, OS patches, local firewall, and IAM instance role.
+- Install/configure CloudWatch Agent and validate memory/filesystem metrics against OS-native values.
+- Build a dashboard for CPU, network, memory, and disk.
+- Configure 80%/90% disk alarms and confirm SNS email delivery.
+- Build a scheduled daily/weekly storage report with server and per-filesystem total/used/free/utilization values.
+- Document evidence, limitations, and cost observations. This is lab practice, not production client delivery.

@@ -90,3 +90,19 @@ See [.ai/CLOUD_AUDIT_LEARNING_PLAN.md](CLOUD_AUDIT_LEARNING_PLAN.md).
 - No Nginx, DB replication/DBA HA, or claim of host HA from multiple containers on one EC2.
 - Only audit environments with explicit authorization; keep evidence secure and sanitized.
 - Do not claim authority to issue SOC 2 reports or formal independent attestation.
+
+## P8 — EC2 security, disk monitoring, and email automation
+See [.ai/EC2_SECURITY_MONITORING_PRACTICE_PLAN.md](EC2_SECURITY_MONITORING_PRACTICE_PLAN.md).
+
+- [ ] Review one authorized EC2 instance, OS, attached volumes/filesystems, public exposure, Security Groups, NACLs, and instance profile.
+- [ ] Harden SSH/administration, local firewall, listening services, OS patch state, and inbound rules.
+- [ ] Configure a least-privilege EC2 IAM role for CloudWatch Agent publishing.
+- [ ] Install/configure CloudWatch Agent on one Linux instance; validate memory and per-filesystem metrics against OS-native values.
+- [ ] Build a CloudWatch dashboard for CPU, network, memory, and disk.
+- [ ] Configure 80% warning and 90% critical disk alarms; confirm SNS email subscription and test notifications.
+- [ ] Build a scheduled daily/weekly report, provisionally EventBridge + Lambda + SNS, with per-server/per-filesystem total, used, available, utilization, and timestamp.
+- [ ] Handle multiple filesystems, missing metrics, stopped instances, and partial failures.
+- [ ] Save sanitized hardening, dashboard, alarm, report, and retest evidence.
+- Acceptance: the test host is hardened; metrics reconcile with OS values; dashboard is readable; threshold email alerts work; scheduled storage report is accurate and reproducible.
+
+Cost gate: CloudWatch custom metrics, alarms, dashboards, logs, SNS, Lambda, EventBridge, EC2, EBS, and public IPv4 may incur charges. Estimate before deployment and obtain explicit approval.

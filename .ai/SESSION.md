@@ -53,3 +53,10 @@ When the user is ready, resume the existing AWS lab in its current order and lat
 - Do not equate ISO 27001 familiarity with SOC 2 delivery experience.
 - Do not claim the new audit curriculum is completed; it is only documented.
 - Only update GitHub again if the user explicitly asks.
+
+## Current Upwork job — EC2 security and disk monitoring
+The user asked to add practice gaps from an Upwork job titled “AWS Engineer with hands-on expert in EC2 security, & disk-space monitoring, and auto email alerts.” The job asks for EC2 hardening, Security Groups/NACLs, SSH/key authentication, patching, IAM roles, vulnerability review, CPU/RAM/disk/network dashboards, 80%/90% disk alerts, and daily/weekly capacity reports.
+
+The new plan is in .ai/EC2_SECURITY_MONITORING_PRACTICE_PLAN.md. Key gaps to practice: repeatable EC2 hardening evidence; least-privilege EC2 instance role; CloudWatch Agent; guest RAM/filesystem metrics; filesystem dimension and capacity accuracy; dashboards; CloudWatch alarms and SNS email confirmation; scheduled report automation with EventBridge/Lambda/SNS; cost estimation. CPU/network default metrics do not automatically provide guest RAM/disk metrics. Threshold alarms and periodic reports are separate deliverables.
+
+The user requested this GitHub update. Documentation only; no AWS resources were created, changed, or deleted. Follow the acceptance-gated workflow: do not start implementation until the user accepts the next phase. Check costs and obtain explicit approval before any billable AWS action.

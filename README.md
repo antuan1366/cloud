@@ -13,6 +13,13 @@ A cost-controlled, console-first AWS security learning lab. The current plan cov
 - Temporary learning exercises: AWS ALB, AWS WAF, S3, CloudTrail, CloudWatch, and selected security assessment tools.
 - Docker container load balancing is not EC2-level high availability.
 
+## Additional learning track: Cloud Infrastructure Auditing
+The lab now includes a dedicated cloud-auditing learning track covering authorized AWS scope definition, asset and architecture discovery, IAM/network/data/logging/vulnerability/backup reviews, framework mapping, evidence collection, findings, remediation, retesting, and technical reporting.
+
+See [.ai/CLOUD_AUDIT_LEARNING_PLAN.md](.ai/CLOUD_AUDIT_LEARNING_PLAN.md).
+
+This is technical assessment and audit-readiness training. It does not authorize the learner to issue a SOC 2 report or act as an independent CPA auditor.
+
 ## Account and cost context
 - AWS credits: USD 120 remaining was previously reported by the user; recheck live balance and eligible services.
 - Access/free-plan deadline: 5 November 2026 was previously reported; recheck live terms.
@@ -36,6 +43,7 @@ See [.ai/IMPLEMENTATION_PLAN_6_DAYS.md](.ai/IMPLEMENTATION_PLAN_6_DAYS.md) for a
 - .ai/RUNBOOK.md — operational procedures.
 - .ai/SESSION.md — latest session handoff.
 - .ai/CHANGELOG.md — meaningful changes.
+- .ai/CLOUD_AUDIT_LEARNING_PLAN.md — cloud infrastructure auditing curriculum.
 
 ## Rules
 - Never create a potentially billable AWS resource without explaining costs, ongoing charges, and cleanup, then receiving explicit approval.

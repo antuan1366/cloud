@@ -40,3 +40,10 @@
 - Added security requirements and Git protections for secrets and Terraform state.
 - Added handoff guide and prioritized backlog.
 - No AWS resources were created during documentation initialization.
+
+## 2026-11-04 — Added EC2 security and monitoring practice track
+- Added .ai/EC2_SECURITY_MONITORING_PRACTICE_PLAN.md for EC2 hardening, disk monitoring, dashboards, email alerts, and scheduled storage reports.
+- Documented practice gaps in CloudWatch Agent, guest memory/filesystem metrics, IAM instance roles, dashboards, alarms, SNS, and scheduled reporting.
+- Added prerequisites, staged exercises, acceptance criteria, evidence requirements, and cost gates.
+- Clarified that standard CPU/network metrics differ from guest RAM/disk metrics, and alarms differ from periodic reports.
+- No AWS resources were created or changed.

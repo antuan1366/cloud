@@ -60,3 +60,8 @@ The earlier lab used Terraform and Ansible and was deployed before the current c
 
 ## Update policy
 Only update this repository when the user explicitly asks. Replace stale values when newer evidence arrives. Date balances, deadlines, inventory checks, and test results.
+
+## Added learning track — EC2 security and monitoring
+The job-aligned practice plan is documented in .ai/EC2_SECURITY_MONITORING_PRACTICE_PLAN.md. It covers EC2 hardening, least-privilege instance roles, CloudWatch Agent memory/filesystem metrics, dashboards, 80%/90% disk alarms, SNS email, and scheduled per-filesystem storage reports. This is documentation only; no implementation has been verified.
+
+No EC2 hardening, CloudWatch Agent configuration, monitoring dashboard, disk alarm, SNS notification, or scheduled storage report has been implemented for this practice track. Before proceeding, inspect existing resources and recheck account credits/expiry/eligibility and service pricing.

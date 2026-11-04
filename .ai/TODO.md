@@ -66,6 +66,20 @@ Status: [ ] not started, [~] in progress, [x] verified complete, [!] blocked. Ma
 - [ ] Recheck billing/credits after usage data updates.
 - Acceptance: no unintended lab resources remain; findings and final cost observations recorded.
 
+## P7 — Cloud infrastructure auditing learning track
+See [.ai/CLOUD_AUDIT_LEARNING_PLAN.md](CLOUD_AUDIT_LEARNING_PLAN.md).
+
+- [ ] Define an authorized assessment scope and rules of engagement.
+- [ ] Build an AWS asset inventory and current-state architecture/data-flow diagram.
+- [ ] Review IAM, network exposure, data protection, logging/monitoring, vulnerability management, configuration, backup/recovery, incident response, and resilience.
+- [ ] Select relevant CIS AWS Foundations Benchmark and AWS Well-Architected checks.
+- [ ] Map selected technical controls to relevant NIST, ISO/IEC 27001, and SOC 2 Trust Services Criteria topics without claiming equivalence.
+- [ ] Collect sanitized evidence and maintain an evidence index.
+- [ ] Create a risk-rated findings register with practical remediation.
+- [ ] Remediate selected findings in the lab and retest.
+- [ ] Produce a technical cloud security assessment report.
+- Acceptance: assessment is scoped, evidence-backed, reproducible, risk-prioritized, and clear about limitations.
+
 ## Cost and safety gates
 - Before every potentially billable action, explain current price assumptions, runtime, storage/network dependencies, ongoing charges, and cleanup.
 - Obtain explicit user approval before creating or enabling paid resources.
@@ -74,3 +88,5 @@ Status: [ ] not started, [~] in progress, [x] verified complete, [!] blocked. Ma
 - Do not commit credentials, private keys, DB passwords, tokens, or sensitive logs.
 - AWS infrastructure is Console-first in this iteration.
 - No Nginx, DB replication/DBA HA, or claim of host HA from multiple containers on one EC2.
+- Only audit environments with explicit authorization; keep evidence secure and sanitized.
+- Do not claim authority to issue SOC 2 reports or formal independent attestation.

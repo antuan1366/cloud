@@ -44,3 +44,7 @@
 
 ## Session closeout
 Record changes, commands/results, tests, AWS resources (never secrets), dated cost observations, remaining work, and exact next action. Update this repository only when the user explicitly asks.
+
+## Additional practice curricula
+- Cloud infrastructure auditing: .ai/CLOUD_AUDIT_LEARNING_PLAN.md.
+- EC2 security, disk monitoring, and email automation: .ai/EC2_SECURITY_MONITORING_PRACTICE_PLAN.md.
